@@ -21,35 +21,24 @@ npm i
 npx hardhat compile
 ```
 
-## Deployment
-
-This project's deployment process uses [Hardhat tasks](https://hardhat.org/guides/create-task.html). The scripts are found in `tasks/`.
-
-Deployment contains 3 steps:
-
-1. `npx hardhat deploy:op` which deploys the core contracts, along with RedemptionReceiver, to Optimism.
-
-2. `npx hardhat deploy:ftm` which deploys the RedemptionSender contract to Fantom. The RedemptionReceiver address from Step 1 should be recorded in `deployed.ts` prior.
-
-## Security
-
-The Velodrome team engaged with Code 4rena for a security review. The results of that audit are available [here](https://code4rena.com/reports/2022-05-velodrome/). Our up-to-date security findings are located on our website [here](https://docs.velodrome.finance/security).
-
-## Contracts
-
-| Name               | Address                                                                                                                               |
-| :----------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
-| WETH               | [0x4200000000000000000000000000000000000006](https://optimistic.etherscan.io/address/0x4200000000000000000000000000000000000006#code) |
-| Velo               | [0x3c8B650257cFb5f272f799F5e2b4e65093a11a05](https://optimistic.etherscan.io/address/0x3c8B650257cFb5f272f799F5e2b4e65093a11a05#code) |
-| MerkleClaim        | [0x00D59BC35174C3b250Dd92a363495d38C8777a49](https://optimistic.etherscan.io/address/0x00D59BC35174C3b250Dd92a363495d38C8777a49#code) |
-| RedemptionSender   | [0x9809fB94eED086F9529df00d6f125Bf25Ee84A93](https://ftmscan.com/address/0x9809fB94eED086F9529df00d6f125Bf25Ee84A93#code)             |
-| RedemptionReceiver | [0x846e822e9a00669dcC647079d7d625d2cd25A951](https://optimistic.etherscan.io/address/0x846e822e9a00669dcC647079d7d625d2cd25A951#code) |
-| PairFactory        | [0x25CbdDb98b35ab1FF77413456B31EC81A6B6B746](https://optimistic.etherscan.io/address/0x25CbdDb98b35ab1FF77413456B31EC81A6B6B746#code) |
-| BribeFactory       | [0xA84EA94Aa705F7d009CDDF2a60f65c0d446b748E](https://optimistic.etherscan.io/address/0xA84EA94Aa705F7d009CDDF2a60f65c0d446b748E#code) |
-| GaugeFactory       | [0xC5be2c918EB04B091962fDF095A217A55CFA42C5](https://optimistic.etherscan.io/address/0xC5be2c918EB04B091962fDF095A217A55CFA42C5#code) |
-| Voter              | [0x09236cfF45047DBee6B921e00704bed6D6B8Cf7e](https://optimistic.etherscan.io/address/0x09236cfF45047DBee6B921e00704bed6D6B8Cf7e#code) |
-| VeloGovernor       | [0x64DD805aa894dc001f8505e000c7535179D96C9E](https://optimistic.etherscan.io/address/0x64DD805aa894dc001f8505e000c7535179D96C9E#code) |
-| VotingEscrow       | [0x9c7305eb78a432ced5C4D14Cac27E8Ed569A2e26](https://optimistic.etherscan.io/address/0x9c7305eb78a432ced5C4D14Cac27E8Ed569A2e26#code) |
-| VeArtProxy         | [0x5F2f6721Ca0C5AC522BC875fA3F09bF693dcFa1D](https://optimistic.etherscan.io/address/0x5F2f6721Ca0C5AC522BC875fA3F09bF693dcFa1D#code) |
-| RewardsDistributor | [0x5d5Bea9f0Fc13d967511668a60a3369fD53F784F](https://optimistic.etherscan.io/address/0x5d5Bea9f0Fc13d967511668a60a3369fD53F784F#code) |
-| Minter             | [0x3460Dc71A8863710D1C907B8d9D5DBC053a4102d](https://optimistic.etherscan.io/address/0x3460Dc71A8863710D1C907B8d9D5DBC053a4102d#code) |
+```
+// Velo deployed to:  0x9815f2595bacae5E322Bc83CBFABed491a2BD320
+// GaugeFactory deployed to:  0xDEf478D840cE65050f96834485Dd6996665c3E8E
+// BribeFactory deployed to:  0xAADd2f5b0E48d10eb91601FA7dd56beFFf05Fa8B
+// PairFactory deployed to:  0x6F98B1C8898211C806d9ef78717b6966518E99f8
+// Router deployed to:  0x2C87E66Bed6CA214cA610D92d9D8A6a7E334C72f
+// Args:  0x6F98B1C8898211C806d9ef78717b6966518E99f8 0x2ed3dddae5b2f321af0806181fbfa6d049be47d8
+// VelodromeLibrary deployed to:  0x426CFE5eAc9AB83F325CC449854788DeF9ecb49E
+// Args:  0x2C87E66Bed6CA214cA610D92d9D8A6a7E334C72f
+// VeArtProxy deployed to:  0x5D7C02250fB52ccFE43DFfee46ec85b33F1635E7
+// VotingEscrow deployed to:  0x9e0D089e15Ed21C3F03018B5296164724388Fa6C
+// Args:  0x9815f2595bacae5E322Bc83CBFABed491a2BD320 0x5D7C02250fB52ccFE43DFfee46ec85b33F1635E7
+// RewardsDistributor deployed to:  0xA352277018baD286C9fe77575f0b43f6a9d32A87
+// Args:  0x9e0D089e15Ed21C3F03018B5296164724388Fa6C
+// Voter deployed to:  0x36a3B9B48e56aefB4998d518159b9e252EA47dfc
+// Args:  0x9e0D089e15Ed21C3F03018B5296164724388Fa6C 0x6F98B1C8898211C806d9ef78717b6966518E99f8 0xDEf478D840cE65050f96834485Dd6996665c3E8E 0xAADd2f5b0E48d10eb91601FA7dd56beFFf05Fa8B
+// Minter deployed to:  0x82D431A1156274A597bd35825EBE59d2AEB35A25
+// Args:  0x36a3B9B48e56aefB4998d518159b9e252EA47dfc 0x9e0D089e15Ed21C3F03018B5296164724388Fa6C 0xA352277018baD286C9fe77575f0b43f6a9d32A87
+// VeloGovernor deployed to:  0x25Dd1F6FF4E42d37e065606455f83DA2e7fc7f6d
+// Args:  0x9e0D089e15Ed21C3F03018B5296164724388Fa6C
+```
