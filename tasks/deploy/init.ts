@@ -1,40 +1,26 @@
-// The tasks in this file should be called by the multisig
-// CURRENTLY OUTDATED
+import { task } from "hardhat/config";
 
-// import { task } from "hardhat/config";
-// import deployed from "./constants/deployed";
+import testConfluxConfig from "./constants/testConfluxConfig";
 
-// task("deploy:init", "Initializes RedemptionSender on Optimism").setAction(
-//   async function (taskArguments, { ethers }) {
-//     // Define network
-//     const network = "optimism-kovan"; // "optimism" for mainnet deploy
 
-//     // PERFORM CHECKS ON ARGS
+task("deploy:confluxInit", "Deploys confluxTestnet init").setAction(async function (
+  taskArguments,
+  { ethers }
+) {
 
-//     // TODO move
-//     const TOKEN_DECIMALS = ethers.BigNumber.from("10").pow(
-//       ethers.BigNumber.from("18")
-//     );
-//     const ELIGIBLE_WEVE =
-//       ethers.BigNumber.from("375112540").mul(TOKEN_DECIMALS); // TODO fix rounding
+  const CONFLUX_CONFIG = testConfluxConfig;
+  const minter = await ethers.getContractAt("Minter", "0x82D431A1156274A597bd35825EBE59d2AEB35A25")
 
-//     const REDEEMABLE_USDC = ethers.BigNumber.from("0"); // TODO update
-//     const REDEEMABLE_VELO =
-//       ethers.BigNumber.from("108000000").mul(TOKEN_DECIMALS); // TODO fix rounding
+//   Initial veVELO distro
+  await minter.initialize(
+    CONFLUX_CONFIG.partnerAddrs,
+    CONFLUX_CONFIG.partnerAmts,
+    CONFLUX_CONFIG.partnerMax
+  );
+  console.log("veVELO distributed");
 
-//     // Load
-//     const RedemptionReceiver = await ethers.getContractFactory(
-//       "RedemptionReceiver"
-//     );
-//     const receiver = await RedemptionReceiver.attach(deployed.optimismReceiver);
-
-//     // Initialize
-//     await receiver.initializeReceiverWith(
-//       deployed.fantomSender,
-//       ELIGIBLE_WEVE,
-//       REDEEMABLE_USDC,
-//       REDEEMABLE_VELO
-//     );
-//     console.log(`RedemptionSender at ${receiver.address} configured!`);
-//   }
-// );
+  await minter.setTeam(CONFLUX_CONFIG.teamMultisig)
+  console.log("Team set for minter");
+  
+  console.log("conflux contracts Init");
+});
