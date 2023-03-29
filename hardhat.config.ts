@@ -50,6 +50,10 @@ const config: HardhatUserConfig = {
     conflux_epsace_testnet: {
       url: "https://evmtestnet.confluxrpc.com",
       accounts: [process.env.PRIVATE_KEY!]
+    },
+    conflux_epsace: {
+      url: "https://evm.confluxrpc.com",
+      accounts: [process.env.PRIVATE_KEY!]
     }
   },
   solidity: {
