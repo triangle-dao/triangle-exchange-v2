@@ -1,6 +1,6 @@
 pragma solidity 0.8.13;
 
-import "openzeppelin-contracts/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "./BaseTest.sol";
 import "utils/TestL2Governance.sol";
 
